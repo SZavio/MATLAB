@@ -1,0 +1,36 @@
+clc , close all, clear all; 
+% Definição das váriaveis 
+
+% Solicitar o número de alunos
+numalunos = input('Digite o número de alunos:');
+
+% Solicitar o número de notas por aluno
+numNotas = input('Digite o número de notas por aluno:');
+
+% Inicializar matriz para armazenar as notas
+notas = zeros(numalunos, numNotas);
+
+% Entrada de notas
+for i = 1:numalunos
+    fprintf('Digite as notas do aluno %d:\n', i);
+    for j = 1:numNotas
+        notas(i, j) = input(sprintf('Nota %d: ', j));
+    end
+end
+
+% Calcular a média de cada aluno
+medias = mean(notas, 2);
+
+% Exibir as médias
+fprintf('\nMédia dos alunos:\n');
+for i = 1:numalunos
+    fprintf('Aluno %d: %.3f\n', i, medias(i));
+end
+
+% Identificar aluno com maior média
+[maiorMedia, idxMaior] = max(medias);
+fprintf('\nO aluno %d tem a maior média: %.2f\n', idxMaior, maiorMedia);
+
+% Identificar aluno com menor média
+[menorMedia, idxMenor] = min(medias);
+fprintf('O aluno %d tem a menor média: %.2f\n', idxMenor, menorMedia)
